@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ngx-indexed-db": "^16.0.0"
+  }
+}

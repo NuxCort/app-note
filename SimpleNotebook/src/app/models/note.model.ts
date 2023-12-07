@@ -1,4 +1,7 @@
 export interface NoteBase {
-    name: string;
-    createdOn: Date;
+    id: string;
+}
+export interface Note extends NoteBase {
+    message: string;
+    createdOn: string;
 }

@@ -1,17 +1,45 @@
 <div class="page">
-    <div *ngFor="let note of notes">
-        
-        <div class="note-header">
-            <div class="note-name sortable">
-                <label class="note-name">{{ note.name }}</label>
-            </div>
-            <div class="note-date sortable">
-                <label class="note-date">{{ note.createdOn }}</label>
-            </div>
-        </div>
-        <ng-template class="note-list">
-            {{ note }}
-        </ng-template>
-    </div>
-    <button (click)="createNote('efgfg')" class="add-note">{{ 'NOTES_BUTTON_CREATE' | translate }}</button>
+    <table class="table">
+        <thead class="note-header">
+            <tr>
+                <th>{{ 'NOTES.NOTE_MESSAGE' | translate }}
+                    <button 
+                        (click)="sortOfMessage()"
+                        type="button" 
+                        class="btn btn-outline-secondary btn-sm">
+                        ^
+                    </button>
+                </th>
+                <th>{{ 'NOTES.NOTE_DATE' | translate }}
+                    <button 
+                        (click)="sortOfDate()"
+                        type="button"
+                        class="btn btn-outline-secondary btn-sm">
+                        ^
+                    </button>
+                </th>
+                <th class="delete-column"></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let note of notes" class="note-body">
+            <tr (click)="openCreateDialog(note)" class="note">
+                <td>
+                    <p class="note-message">{{ note.message }}</p>
+                </td>
+                <td>
+                    <p class="note-date">{{ note.createdOn }}</p>
+                </td>
+                <td class="delete-column">
+                    <a (click)="deleteNote(note)">
+                        <p class="note-delete">{{ 'NOTES.BUTTON_DELETE' | translate}}</p>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button 
+        (click)="openCreateDialog()" 
+        class="btn btn-primary add-note">
+        {{ 'NOTES.BUTTON_CREATE' | translate}}
+    </button>
 </div>

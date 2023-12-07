@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{ 'MODAL.TITLE' | translate}}</h5>
+        <button type="button" class="btn close">
+            <span
+                (click)="activeModal.dismiss()" 
+                aria-hidden="true">
+                {{ 'MODAL.CLOSE_X' | translate }}
+            </span>
+        </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label 
+            for="message-text" 
+            class="col-form-label">
+            {{ 'MODAL.NOTE' | translate}}
+        </label>
+        <textarea 
+            #inputMessage
+            [(ngModel)]="message"
+            class="form-control" 
+            name="message-text"
+            id="message-text"
+            [placeholder]="'MODAL.PLACEHOLDER' | translate">
+        </textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button 
+        type="button" 
+        class="btn btn-secondary" 
+        (click)="activeModal.close()">
+        {{ 'MODAL.CLOSE' | translate}}
+    </button>
+    <button 
+        (click)="createNote()"
+        type="button" 
+        class="btn btn-primary">
+        {{ 'MODAL.CONFIRM' | translate}}
+    </button>
+  </div>

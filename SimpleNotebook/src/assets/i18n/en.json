@@ -1,0 +1,16 @@
+{
+    "NOTES": {
+        "BUTTON_CREATE": "Create note",
+        "BUTTON_DELETE": "X",
+        "NOTE_MESSAGE": "Note",
+        "NOTE_DATE": "Date of creation"
+    },
+    "MODAL": {
+        "TITLE": "Add Note",
+        "NOTE": "Note:",
+        "CLOSE": "Close",
+        "CONFIRM": "Confirm",
+        "CLOSE_X": "X",
+        "PLACEHOLDER": "Write your note here..."
+    }
+}

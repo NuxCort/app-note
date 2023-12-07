@@ -1,0 +1,35 @@
+.table {
+    margin: 24px;
+
+    .delete-column{
+        width: 24px !important;
+
+        .note-delete:hover {
+            color: red;
+            cursor: pointer;
+        }
+    }
+
+    .note {
+
+        td {
+            max-width: 200px;
+            width: 160px;
+        }
+        
+        .note-message {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .note-message:hover {
+            cursor: pointer;
+            color: gray;
+        }
+    }
+}
+
+.add-note {
+    margin-left: 24px;
+}
