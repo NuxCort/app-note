@@ -3,6 +3,7 @@ import { Note, NoteBase } from '../models/note.model';
 import { ModalDismissReasons, NgbActiveModal, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Subject, toArray } from 'rxjs';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { NoteService } from '../services/note.service';
 
 @Component({
   selector: 'app-modal-window',
@@ -18,6 +19,7 @@ export class ModalWindowComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
+    private noteService: NoteService
     ){}
 
   public createNote(): void {
@@ -41,6 +43,7 @@ export class ModalWindowComponent {
 
     notes.push(note);
     localStorage.setItem(this.LOCAL_STORAGE_KEY_CONST, JSON.stringify(notes));
+    this.noteService.isNewNote.next(true);
     this.inputMessage.nativeElement.value = null;
   }
 }

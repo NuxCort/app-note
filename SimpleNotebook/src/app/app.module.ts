@@ -11,6 +11,7 @@ import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { FormsModule } from '@angular/forms';
 import { DBConfig, NgxIndexedDBModule, NgxIndexedDBService } from 'ngx-indexed-db';
+import { NoteService } from './services/note.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DBConfig, NgxIndexedDBModule, NgxIndexedDBService } from 'ngx-indexed-d
   providers: [
     HttpClient,
     NgbActiveModal,
+    NoteService
   ],
   bootstrap: [AppComponent]
 })

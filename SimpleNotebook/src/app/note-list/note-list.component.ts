@@ -4,6 +4,8 @@ import { EventEmitter } from 'stream';
 import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ModalWindowComponent } from '../modal-window/modal-window.component';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { Observable, Subject } from 'rxjs';
+import { NoteService } from '../services/note.service';
 
 @Component({
   selector: 'app-note-list',
@@ -14,23 +16,33 @@ export class NoteListComponent {
   public notes: Note[] = [];
   public modalOptions?: NgbModalOptions;
   public readonly LOCAL_STORAGE_KEY_CONST: string = "note";
+  protected isNewNote?: boolean;
 
   constructor(
     public activeModal: NgbActiveModal,
     private modalService: NgbModal,
+    private noteService: NoteService
   ){ 
     this.modalOptions = { backdrop:'static', backdropClass:'customBackdrop'}
     this.getNotes();
+    this.noteService.isNewNote.subscribe(value => {
+      this.isNewNote = value;
+      if (this.isNewNote === true) {
+        this.getNotes();
+      }
+  });
    }
 
-  public getNotes(): void {
+  public getNotes(): Note[] {
     let allNotesInString: string = "";
     if (typeof window !== "undefined") {
       allNotesInString = localStorage.getItem(this.LOCAL_STORAGE_KEY_CONST) || "";
       if (allNotesInString) {
       this.notes = JSON.parse(allNotesInString);
+      return this.notes;
       }
     }
+    return [];
   }
 
   public deleteNote(removedNote?: Note) {
