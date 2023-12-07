@@ -1,6 +1,16 @@
 {
     "NOTES": {
         "BUTTON_CREATE": "Создать заметку",
-        "BUTTON_DELETE": "X"
+        "BUTTON_DELETE": "X",
+        "NOTE_MESSAGE": "Заметка",
+        "NOTE_DATE": "Дата создания"
+    },
+    "MODAL": {
+        "TITLE": "Добавить заметку",
+        "NOTE": "Заметка:",
+        "CLOSE": "Закрыть",
+        "CONFIRM": "Подтвердить",
+        "CLOSE_X": "X",
+        "PLACEHOLDER": "Напишите что-нибудь..."
     }
 }
