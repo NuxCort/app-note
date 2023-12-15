@@ -1,3 +1,9 @@
+@import '../../assets/styles/_variables.scss';
+
+a {
+    text-decoration: none;
+    color: black;
+}
 .table {
     margin: 24px;
 
@@ -5,7 +11,7 @@
         width: 24px !important;
 
         .note-delete:hover {
-            color: red;
+            color: $icon-delete-color;
             cursor: pointer;
         }
     }
@@ -23,13 +29,21 @@
             overflow: hidden;
         }
 
-        .note-message:hover {
+        .note-message:hover, .note-edit:hover {
             cursor: pointer;
-            color: gray;
+            color: $hover-entite-color;
         }
     }
 }
 
 .add-note {
     margin-left: 24px;
+}
+
+::ng-deep .mat-menu {
+    max-width: 400px !important;
+}
+.display-note {
+    max-width: 400px;
+    margin: 20px;
 }

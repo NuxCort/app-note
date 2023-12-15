@@ -5,13 +5,11 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
+    imports: [
         RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+    ],
+    declarations: [AppComponent],
+}).compileComponents();
   });
 
   it('should create the app', () => {
@@ -23,7 +21,7 @@ describe('AppComponent', () => {
   it(`should have as title 'SimpleNotebook'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('SimpleNotebook');
+    expect(app).toEqual('SimpleNotebook');
   });
 
   it('should render title', () => {

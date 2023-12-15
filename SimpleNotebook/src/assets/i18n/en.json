@@ -3,14 +3,17 @@
         "BUTTON_CREATE": "Create note",
         "BUTTON_DELETE": "X",
         "NOTE_MESSAGE": "Note",
-        "NOTE_DATE": "Date of creation"
+        "NOTE_DATE": "Date of creation",
+        "EDIT": "Edit note"
     },
     "MODAL": {
-        "TITLE": "Add Note",
+        "TITLE_ADD": "Add Note",
+        "TITLE_EDIT": "Edit Note",
         "NOTE": "Note:",
         "CLOSE": "Close",
-        "CONFIRM": "Confirm",
+        "CONFIRM": "Create",
         "CLOSE_X": "X",
-        "PLACEHOLDER": "Write your note here..."
+        "PLACEHOLDER": "Write your note here...",
+        "SAVE": "Save"
     }
 }

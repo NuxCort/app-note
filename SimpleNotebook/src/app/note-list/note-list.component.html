@@ -2,9 +2,9 @@
     <table class="table">
         <thead class="note-header">
             <tr>
-                <th>{{ 'NOTES.NOTE_MESSAGE' | translate }}
+                <th >{{ 'NOTES.NOTE_MESSAGE' | translate }}
                     <button 
-                        (click)="sortOfMessage()"
+                        (click)="arraySortingService.toggleSortDirection(notes, noteFieldType.message)"
                         type="button" 
                         class="btn btn-outline-secondary btn-sm">
                         ^
@@ -12,33 +12,45 @@
                 </th>
                 <th>{{ 'NOTES.NOTE_DATE' | translate }}
                     <button 
-                        (click)="sortOfDate()"
+                        (click)="arraySortingService.toggleSortDirection(notes, noteFieldType.createdOn)"
                         type="button"
                         class="btn btn-outline-secondary btn-sm">
                         ^
                     </button>
                 </th>
+                <th class="edit-column"></th>
                 <th class="delete-column"></th>
             </tr>
         </thead>
         <tbody *ngFor="let note of notes" class="note-body">
-            <tr (click)="openCreateDialog(note)" class="note">
+            <tr 
+                mat-button 
+                [matMenuTriggerFor]="openNote"
+                class="note">
                 <td>
                     <p class="note-message">{{ note.message }}</p>
                 </td>
                 <td>
                     <p class="note-date">{{ note.createdOn }}</p>
                 </td>
+                <td class="edit-column">
+                    <a (click)="createOrEditNote(note); $event.stopPropagation()">
+                        <p class="note-edit">{{ 'NOTES.EDIT' | translate }}</p>
+                    </a>
+                </td>
                 <td class="delete-column">
                     <a (click)="deleteNote(note)">
                         <p class="note-delete">{{ 'NOTES.BUTTON_DELETE' | translate}}</p>
                     </a>
                 </td>
+                <mat-menu #openNote="matMenu" class="mat-menu">
+                    <p class="display-note">{{ note.message }}</p>
+                </mat-menu>
             </tr>
         </tbody>
     </table>
     <button 
-        (click)="openCreateDialog()" 
+        (click)="createOrEditNote()" 
         class="btn btn-primary add-note">
         {{ 'NOTES.BUTTON_CREATE' | translate}}
     </button>

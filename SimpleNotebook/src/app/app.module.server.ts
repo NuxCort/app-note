@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ApplicationRef, DoBootstrap, NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 
 import { AppModule } from './app.module';
@@ -9,6 +9,11 @@ import { AppComponent } from './app.component';
     AppModule,
     ServerModule,
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [],
 })
-export class AppServerModule {}
+
+export class AppServerModule implements DoBootstrap {
+  ngDoBootstrap(appRef: ApplicationRef) {
+    appRef.bootstrap(AppComponent);
+  }
+ }

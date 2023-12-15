@@ -1,5 +1,6 @@
 <div class="modal-header">
-    <h5 class="modal-title">{{ 'MODAL.TITLE' | translate}}</h5>
+    <h5 *ngIf="!noteEdit" class="modal-title">{{ 'MODAL.TITLE_ADD' | translate}}</h5>
+    <h5 *ngIf="noteEdit" class="modal-title">{{ 'MODAL.TITLE_EDIT' | translate}}</h5>
         <button type="button" class="btn close">
             <span
                 (click)="activeModal.dismiss()" 
@@ -12,16 +13,18 @@
     <form>
       <div class="form-group">
         <label 
-            for="message-text" 
+            for="message" 
             class="col-form-label">
             {{ 'MODAL.NOTE' | translate}}
         </label>
-        <textarea 
+        <textarea
             #inputMessage
+            type="text"
+            id="message"
+            name="message"
+            class="form-control"
+            required
             [(ngModel)]="message"
-            class="form-control" 
-            name="message-text"
-            id="message-text"
             [placeholder]="'MODAL.PLACEHOLDER' | translate">
         </textarea>
       </div>
@@ -34,10 +37,18 @@
         (click)="activeModal.close()">
         {{ 'MODAL.CLOSE' | translate}}
     </button>
-    <button 
+    <button  
+      *ngIf="!noteEdit"  
         (click)="createNote()"
         type="button" 
         class="btn btn-primary">
         {{ 'MODAL.CONFIRM' | translate}}
     </button>
+    <button 
+      *ngIf="noteEdit"  
+      (click)="save()"
+      type="button" 
+      class="btn btn-primary">
+      {{ 'MODAL.SAVE' | translate}}
+  </button>
   </div>
